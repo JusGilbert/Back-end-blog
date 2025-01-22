@@ -1,0 +1,20 @@
+
+<%- include('layout'); %>
+<h1>Blog Posts</h1>
+<% if (posts.length === 0) { %>
+    <p>No posts yet. <a href="/new">Create one!</a></p>
+<% } else { %>
+    <ul>
+        <% posts.forEach(post => { %>
+            <li>
+                <h2><%= post.title %></h2>
+                <p><%= post.content %></p>
+                <form action="/delete/<%= post.id %>" method="POST" style="display: inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <a href="/edit/<%= post.id %>">Edit</a>
+            </li>
+        <% }) %>
+    </ul>
+<% } %>
+ 
